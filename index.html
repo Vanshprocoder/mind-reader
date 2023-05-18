@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Mind Reading</title>
+  <style>
+    .loader {
+      position: relative;
+      width: 80px;
+      height: 80px;
+      margin: 0 auto;
+      display: none;
+    }
+
+    .loader .ball {
+      position: absolute;
+      top: 0;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background-color: #FFD700;
+      animation: bounce 2s infinite ease-in-out;
+    }
+
+    .loader .ball1 {
+      left: -24px;
+      animation-delay: 0.1s;
+    }
+
+    .loader .ball2 {
+      left: 0;
+      animation-delay: 0.2s;
+    }
+
+    .loader .ball3 {
+      left: 24px;
+      animation-delay: 0.3s;
+    }
+
+    @keyframes bounce {
+      0%, 100% { top: 0; }
+      50% { top: 40px; }
+    }
+
+    .form-container {
+      text-align: center;
+      margin: 20px auto;
+      width: 300px;
+    }
+
+    .form-container input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+    }
+
+    .form-container button {
+      padding: 10px 20px;
+    }
+
+    .result-container {
+      text-align: center;
+      margin: 20px auto;
+      width: 300px; /* Increase the width */
+      display: none;
+      /*font-size: 30px; /* Increase the font size */
+    }
+    #user-output {
+  font-size: 35px; /* Increase the font size */
+}
+
+
+    .loading-text {
+      display: none;
+      margin-top: 10px;
+      text-align: center;
+      font-size: 25px;
+    }
+
+    body {
+      background: radial-gradient(circle, #7B68EE, #0000FF);
+      background-size: 400% 400%;
+      animation: gradientAnimation 5s ease infinite;
+      color: #fff; /* Set text color to white */
+    }
+
+    @keyframes gradientAnimation {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 200%;
+      }
+      100% {
+        background-position: 0% 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="loader">
+    <div class="ball ball1"></div>
+    <div class="ball ball2"></div>
+    <div class="ball ball3"></div>
+  </div>
+  <div class="loading-text"><strong>Reading your mind...</strong></div>
+
+  <div class="form-container">
+    <h2>Enter Anything</h2>
+    <input type="text" id="user-input" placeholder="Enter your input">
+    <button onclick="showLoader()">Read my mind</button>
+  </div>
+
+  <div class="result-container">
+    <h2>You are Thinking about..</h2>
+    <p id="user-output"></p>
+  </div>
+
+  <script>
+    function showLoader() {
+      var userInput = document.getElementById("user-input").value;
+      document.getElementById("user-output").textContent = userInput;
+
+      var loader = document.querySelector(".loader");
+      var loadingText = document.querySelector(".loading-text");
+      var formContainer = document.querySelector(".form-container");
+      var resultContainer = document.querySelector(".result-container");
+
+      loader.style.display = "block";
+      loadingText.style.display = "block";
+      formContainer.style.display = "none";
+
+      setTimeout(function() {
+        loader.style.display = "none";
+        loadingText.style.display = "none";
+        resultContainer.style.display = "block";
+      }, 2000);
+    }
+  </script>
+</body>
+</html>
